@@ -1,4 +1,4 @@
-#Communication With Server
+# Communication With Server
 1. Setting up : Static IP Address, DHCP range, server IP address and port, username, password
 2. Configuration:
 	* testuser
@@ -15,8 +15,8 @@
 		* ID
 		* flyzones - altitude , boundary points( latitude, longitude), waypoints (latitude,longitude,altitude),search grid points,air drop boundary points etc.
 
-##SETUP
-###Setting Up Host Computer
+## SETUP
+### Setting Up Host Computer
 
 These installations are important, please install them before your proceed further.
 1. docker- https://docs.docker.com/engine/install/
@@ -62,7 +62,7 @@ Mission configuration - just check admin web login, Navigate to http://localhost
 Interop Integration - with the interop server, is it needed? Quite similar to the initial set up, it is done using python scripts.
 
 
-API specification:
+**API specification**:
 Endpoints
 Make get requests, some require json formatting, this is the most important part, will provide us with mission data
 One of the examples.
@@ -74,7 +74,7 @@ Cookie: sessionid=9vepda5aorfdilwhox56zhwp8aodkxwi
 * Username:testuser, password:testpass
 * The router will be configured to have a static IP address range, and a DHCP IP address range
 
-###API Specification
+### API Specification
 Terminal Commands:(https://adityasridhar.com/posts/how-to-easily-use-curl-for-http-requests )
 1. Login to the server: curl -v --header "Content-Type: application/json" -d " {\"username\":\"testadmin\",\"password\":\"testpass\"}" 
 http://localhost:8000/api/login
@@ -89,12 +89,12 @@ curl -v --cookie "sessionid=6d68n8qysqjde3cvtp3dlbhezjhd3dwo" http://localhost:8
 
 curl -v --cookie "sessionid=6d68n8qysqjde3cvtp3dlbhezjhd3dwo" --header "Content-Type: application/json" -d "{\"latitude\":\"38\",\"longitude\":\"-75\",\"altitude\":\"50\",\"heading\":\"90\"}" http://localhost:8000/api/telemetry
 
-###Post And Get Using Python:
+### Post And Get Using Python:
 
 1. import requests(https://stackoverflow.com/questions/25491090/how-to-use-python-to-execute-a-curl-command )
 2. For getting sessionID: requests.Session() (https://stackoverflow.com/questions/43716660/how-to-make-a-post-with-previous-cookies-with-python-requests-library-or-pycurl )
 
-###Python script for logging in to server:-
+### Python script for logging in to server:-
 1. Login to the server: 	
 import requests
 url = 'http://localhost:8000/api/login'
