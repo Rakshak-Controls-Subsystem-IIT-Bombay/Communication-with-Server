@@ -136,37 +136,37 @@ curl -v --cookie "sessionid=6d68n8qysqjde3cvtp3dlbhezjhd3dwo" --header "Content-
 
 2. Getting response from server:
 
-import requests
+	import requests
 
-ses=request.Session()
+	ses=request.Session()
 
-r1 = ses.get('http://localhost:8000/api/teams')
+	r1 = ses.get('http://localhost:8000/api/teams')
 
-print(r1.text)
+	print(r1.text)
 
 3. Getting Mission Response:
 
-import requests
+	import requests
 
-ses=request.Session()
+	ses=request.Session()
 
-r1 = ses.get('http://localhost:8000/api/missions/1')
+	r1 = ses.get('http://localhost:8000/api/missions/1')
 
-print(r1.text)
+	print(r1.text)
 
 4. Upload Telemetry data
 	 	 	 	
-import requests
+	import requests
 
-ses=requests.Session()
+	ses=requests.Session()
 
-url = 'http://localhost:8000/api/telemetry'
+	url = 'http://localhost:8000/api/telemetry'
 
-data = '{\"latitude\":\"38\",\"longitude\":\"-75\",\"altitude\":\"50\",\"heading\":\"90\"}'
+	data = '{\"latitude\":\"38\",\"longitude\":\"-75\",\"altitude\":\"50\",\"heading\":\"90\"}'
 
-headers = {'Content-type': 'application/json'}
+	headers = {'Content-type': 'application/json'}
 
-r = ses.post(url, data=data, headers=headers)
+	r = ses.post(url, data=data, headers=headers)
 
 
 
