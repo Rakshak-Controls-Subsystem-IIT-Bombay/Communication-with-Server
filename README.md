@@ -25,13 +25,21 @@ These installations are important, please install them before your proceed furth
 
 
 Interop Git Repo - Clone the github repository git clone https://github.com/auvsi-suas/interop.git
+
 Change directories - cd interop
+
 Docker Images- The interop system is release to teams as these.
+
 auvsisuas/interop-server
+
 cd interop/server
+
 sudo ./interop-server.sh create_db
+
 sudo ./interop-server.sh load_test_data
+
 sudo ./interop-server.sh up
+
 (This will run the server, to exit Ctrl+C)
 
 
@@ -39,18 +47,25 @@ There are a few other commands here such as view server log, upgrade server log 
 
 
 auvsisuas/interop-client
+
 cd interop/client
+
 sudo ./interop-client.sh run
+
 To request status of teams - ( Here the local ip of interop is required) which will be localhost:8000 so replace the server IP given in the code with localhost:8000
+
 ./tools/interop_cli.py \
-    --url http://10.10.130.2:8000 \
-    --username testuser \
-    Teams
+ --url http://10.10.130.2:8000 \
+ --username testuser \
+ Teams
 
 Similarly get mission
+
 Upload objects
+
 Check the folder structure, (2 json, 2 jpg)
-Example command to upload
+
+**Example command to upload**
 ./tools/interop_cli.py \
     --url http://10.10.130.2:8000 \
     --username testuser \
@@ -58,16 +73,21 @@ Example command to upload
     --odlc_dir /path/to/object/directory
 
 
-Mission configuration - just check admin web login, Navigate to http://localhost:8000
-Interop Integration - with the interop server, is it needed? Quite similar to the initial set up, it is done using python scripts.
+**Mission configuration** - just check admin web login, Navigate to http://localhost:8000
+**Interop Integration** - with the interop server, is it needed? Quite similar to the initial set up, it is done using python scripts.
 
 
 **API specification**:
 Endpoints
+
 Make get requests, some require json formatting, this is the most important part, will provide us with mission data
+
 One of the examples.
+
 GET /api/missions/1 HTTP/1.1
+
 Host: 192.168.1.2:8000
+
 Cookie: sessionid=9vepda5aorfdilwhox56zhwp8aodkxwi
 
 * Competition host os is Ubuntu
@@ -97,31 +117,56 @@ curl -v --cookie "sessionid=6d68n8qysqjde3cvtp3dlbhezjhd3dwo" --header "Content-
 ### Python script for logging in to server:-
 1. Login to the server: 	
 import requests
+
 url = 'http://localhost:8000/api/login'
+
 data = '{\"username\":\"testadmin\",\"password\":\"testpass\"}'
+
 headers = {'Content-type': 'application/json'}
-r = requests.post(url, data=data, headers=headers) 	 	 	
+
+r = requests.post(url, data=data, headers=headers) 	
+
 print (req.text)
+
 **With cookies**:
+
 ses = requests.Session()  # use this object for all get / post requests #
+
 r = ses.post(url, data=data,headers=headers)
+
 2. Getting response from server:
+
 import requests
+
 ses=request.Session()
+
 r1 = ses.get('http://localhost:8000/api/teams')
+
 print(r1.text)
+
 3. Getting Mission Response:
+
 import requests
+
 ses=request.Session()
+
 r1 = ses.get('http://localhost:8000/api/missions/1')
+
 print(r1.text)
+
 4. Upload Telemetry data
 	 	 	 	
 import requests
+
 ses=requests.Session()
+
 url = 'http://localhost:8000/api/telemetry'
+
 data = '{\"latitude\":\"38\",\"longitude\":\"-75\",\"altitude\":\"50\",\"heading\":\"90\"}'
+
 headers = {'Content-type': 'application/json'}
+
 r = ses.post(url, data=data, headers=headers)
+
 
 
