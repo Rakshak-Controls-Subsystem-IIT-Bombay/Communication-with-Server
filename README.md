@@ -24,46 +24,46 @@ These installations are important, please install them before your proceed furth
 3. git - high chance you must have already installed this, needed for cloning repository and version changes. https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
 
-Interop Git Repo - Clone the github repository git clone https://github.com/auvsi-suas/interop.git
+*Interop Git Repo* - Clone the github repository git clone https://github.com/auvsi-suas/interop.git
 
-Change directories - cd interop
+*Change directories* - cd interop
 
-Docker Images- The interop system is release to teams as these.
+*Docker Images*- The interop system is release to teams as these.
 
-auvsisuas/interop-server
+	auvsisuas/interop-server
 
-cd interop/server
+	cd interop/server
 
-sudo ./interop-server.sh create_db
+	sudo ./interop-server.sh create_db
 
-sudo ./interop-server.sh load_test_data
+	sudo ./interop-server.sh load_test_data
 
-sudo ./interop-server.sh up
+	sudo ./interop-server.sh up
 
-(This will run the server, to exit Ctrl+C)
+	(This will run the server, to exit Ctrl+C)
 
 
 There are a few other commands here such as view server log, upgrade server log and delete server data but these can be skipped for now
 
 
-auvsisuas/interop-client
+	auvsisuas/interop-client
 
-cd interop/client
+	cd interop/client
 
-sudo ./interop-client.sh run
+	sudo ./interop-client.sh run
 
 To request status of teams - ( Here the local ip of interop is required) which will be localhost:8000 so replace the server IP given in the code with localhost:8000
 
-./tools/interop_cli.py \
- --url http://10.10.130.2:8000 \
- --username testuser \
- Teams
+	./tools/interop_cli.py \
+ 	--url http://10.10.130.2:8000 \
+ 	--username testuser \
+ 	Teams
 
 Similarly get mission
 
-Upload objects
+	* Upload objects
 
-Check the folder structure, (2 json, 2 jpg)
+	* Check the folder structure, (2 json, 2 jpg)
 
 **Example command to upload**
 ./tools/interop_cli.py \
@@ -74,6 +74,7 @@ Check the folder structure, (2 json, 2 jpg)
 
 
 **Mission configuration** - just check admin web login, Navigate to http://localhost:8000
+
 **Interop Integration** - with the interop server, is it needed? Quite similar to the initial set up, it is done using python scripts.
 
 
