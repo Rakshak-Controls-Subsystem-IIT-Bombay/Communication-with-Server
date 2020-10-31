@@ -54,10 +54,12 @@ There are a few other commands here such as view server log, upgrade server log 
 
 To request status of teams - ( Here the local ip of interop is required) which will be localhost:8000 so replace the server IP given in the code with localhost:8000
 
-	./tools/interop_cli.py \
- 	--url http://10.10.130.2:8000 \
- 	--username testuser \
- 	Teams
+
+	./tools/interop_cli.py 
+
+	--url http://10.10.130.2:8000 
+	--username testuser
+	Teams
 
 Similarly get mission
 
@@ -67,6 +69,7 @@ Similarly get mission
 
 **Example command to upload**
 ./tools/interop_cli.py \
+
     --url http://10.10.130.2:8000 \
     --username testuser \
     odlcs \
@@ -85,9 +88,8 @@ Make get requests, some require json formatting, this is the most important part
 
 One of the examples.
 
-GET /api/missions/1 HTTP/1.1
-
-Host: 192.168.1.2:8000
+	GET /api/missions/1 HTTP/1.1
+	Host: 192.168.1.2:8000
 
 Cookie: sessionid=9vepda5aorfdilwhox56zhwp8aodkxwi
 
@@ -97,18 +99,26 @@ Cookie: sessionid=9vepda5aorfdilwhox56zhwp8aodkxwi
 
 ### API Specification
 Terminal Commands:(https://adityasridhar.com/posts/how-to-easily-use-curl-for-http-requests )
-1. Login to the server: curl -v --header "Content-Type: application/json" -d " {\"username\":\"testadmin\",\"password\":\"testpass\"}" 
-http://localhost:8000/api/login
-2. Getting response from server:
-curl -v --cookie "sessionid=6d68n8qysqjde3cvtp3dlbhezjhd3dwo" http://localhost:8000/api/teams
-Problem: Not receiving telemetry data from server
-3. Getting Mission Response:
+Login to the server:
 
-curl -v --cookie "sessionid=6d68n8qysqjde3cvtp3dlbhezjhd3dwo" http://localhost:8000/api/missions/1
+	curl -v --header "Content-Type: application/json" -d "
 
-4. Upload Telemetry data
+	{\"username\":\"testadmin\",\"password\":\"testpass\"}" 
 
-curl -v --cookie "sessionid=6d68n8qysqjde3cvtp3dlbhezjhd3dwo" --header "Content-Type: application/json" -d "{\"latitude\":\"38\",\"longitude\":\"-75\",\"altitude\":\"50\",\"heading\":\"90\"}" http://localhost:8000/api/telemetry
+	http://localhost:8000/api/login
+
+Getting response from server:
+
+	curl -v --cookie "sessionid=6d68n8qysqjde3cvtp3dlbhezjhd3dwo" http://localhost:8000/api/teams
+**Problem**: Not receiving telemetry data from server
+
+Getting Mission Response:
+
+	curl -v --cookie "sessionid=6d68n8qysqjde3cvtp3dlbhezjhd3dwo" http://localhost:8000/api/missions/1
+
+Upload Telemetry data
+
+	curl -v --cookie "sessionid=6d68n8qysqjde3cvtp3dlbhezjhd3dwo" --header "Content-Type: application/json" -d "{\"latitude\":\"38\",\"longitude\":\"-75\",\"altitude\":\"50\",\"heading\":\"90\"}" http://localhost:8000/api/telemetry
 
 ### Post And Get Using Python:
 
@@ -116,10 +126,13 @@ curl -v --cookie "sessionid=6d68n8qysqjde3cvtp3dlbhezjhd3dwo" --header "Content-
 2. For getting sessionID: requests.Session() (https://stackoverflow.com/questions/43716660/how-to-make-a-post-with-previous-cookies-with-python-requests-library-or-pycurl )
 
 ### Python script for logging in to server:-
-1. Login to the server: 	
+Login to the server:
+	
+
 	import requests
 
 	url = 'http://localhost:8000/api/login'
+	
 
 	data = '{\"username\":\"testadmin\",\"password\":\"testpass\"}'
 
@@ -135,7 +148,7 @@ curl -v --cookie "sessionid=6d68n8qysqjde3cvtp3dlbhezjhd3dwo" --header "Content-
 
 	r = ses.post(url, data=data,headers=headers)
 
-2. Getting response from server:
+Getting response from server:
 
 	import requests
 
@@ -145,7 +158,7 @@ curl -v --cookie "sessionid=6d68n8qysqjde3cvtp3dlbhezjhd3dwo" --header "Content-
 
 	print(r1.text)
 
-3. Getting Mission Response:
+Getting Mission Response:
 
 	import requests
 
@@ -155,8 +168,8 @@ curl -v --cookie "sessionid=6d68n8qysqjde3cvtp3dlbhezjhd3dwo" --header "Content-
 
 	print(r1.text)
 
-4. Upload Telemetry data
-	 	 	 	
+Upload Telemetry data
+
 	import requests
 
 	ses=requests.Session()
