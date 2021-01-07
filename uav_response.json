@@ -1,0 +1,1 @@
+[{"team": {"id": 2, "username": "testuser", "name": "", "university": ""}, "inAir": false, "telemetry": {"latitude": 38.0, "longitude": -76.0, "altitude": 100.0, "heading": 90.0}, "telemetryId": "8", "telemetryAgeSec": 5350585.371578, "telemetryTimestamp": "2020-11-06T18:22:29.167686+00:00"}]
