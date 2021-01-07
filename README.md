@@ -182,21 +182,22 @@ Upload Telemetry data
 
 	r = ses.post(url, data=data, headers=headers)
 	
-Problem:
-1.Python files upload on client machine
-2.Docker integration error
 
-Problem resolved:
-1.Using nano on virtual client machine, python files were copied
-2.However, creating individual python scripts for login, getting response from server, getting mission response, etc. resulted in a forbidden 403 error. This is because in order to get the response from the server,  it should identify the client, which is done only when the login is done. This forced me to include initial login python scripts in all the individual python files created. In order to solve this issue,all the individual python scripts are combined into a single python script of commands.py .This works well.
 
-##Generate json file for the responses received from the server.
+## Problem:
+1. Python files upload on client machine
+2. Docker integration error
+
+#### Problem resolved:
+1. Using nano on virtual client machine, python files were copied
+2. However, creating individual python scripts for login, getting response from server, getting mission response, etc. resulted in a forbidden 403 error. This is because in order to get the response from the server,  it should identify the client, which is done only when the login is done. This forced me to include initial login python scripts in all the individual python files created. In order to solve this issue,all the individual python scripts are combined into a single python script of commands.py .This works well.
+
+## Generate json file for the responses received from the server.
 There are four files generated:
-1.uav_login.json : response received from http://localhost:8000/api/login 
-2.uav_response.json : response received from http://localhost:8000/api/teams 
-3.uav_mission.json : response received from http://localhost:8000/api/missions/1 
-4.uav_telemetry.json : response received from http://localhost:8000/api/telemetry
+1. uav_login.json : response received from http://localhost:8000/api/login 
+2. uav_response.json : response received from http://localhost:8000/api/teams 
+3. uav_mission.json : response received from http://localhost:8000/api/missions/1 
+4. uav_telemetry.json : response received from http://localhost:8000/api/telemetry
 
-Problem: In uav_response.json, the inAir parameter has a response of false instead of False, hence it gives an error while reading the json file
+**Problem**: In uav_response.json, the inAir parameter has a response of false instead of False, hence it gives an error while reading the json file
 This cannot be changed from our side, since this is the response from the server
-
