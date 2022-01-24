@@ -33,7 +33,7 @@ for i in range(4):
       coords_1 = (latitude[i], longitude[i])
       coords_2 = (latitude[j], longitude[j])
       distance.append(vincenty(coords_1, coords_2).km)
-print("Max distance:", max(distance),"km")
+print("Max distance:", max(distance)*1000,"m")
 
 # Closing file
 f.close()
