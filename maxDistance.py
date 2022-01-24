@@ -4,7 +4,7 @@
 # Requires uav_mission.json file to calculate the distance between coordinates
 
 import json
-from geopy.distance import vincenty
+from geopy.distance import geodesic
 
 # Opening JSON file
 f = open('uav_mission.json')
@@ -32,7 +32,7 @@ for i in range(4):
     if i!=j :
       coords_1 = (latitude[i], longitude[i])
       coords_2 = (latitude[j], longitude[j])
-      distance.append(vincenty(coords_1, coords_2).km)
+      distance.append(geodesic(coords_1, coords_2).km)
 print("Max distance:", max(distance)*1000,"m")
 
 # Closing file
