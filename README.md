@@ -201,3 +201,8 @@ There are four files generated:
 
 **Problem**: In uav_response.json, the inAir parameter has a response of false instead of False, hence it gives an error while reading the json file
 This cannot be changed from our side, since this is the response from the server
+
+
+Update 24th January,2022:
+maxDistance.py file calcultes maximum distance between four co-ordinates of the polygon in which UGV will land, for power consumption estimation.
+It takes uav_mission.json file as an input and returns maximum distance between any two pair of coordinates of the polygon
